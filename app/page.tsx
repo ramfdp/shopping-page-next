@@ -47,6 +47,7 @@ export default function Home() {
              className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
              priority
            />
+           
            {/* Reflection/Ground shadow */}
            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[60%] h-[20px] bg-black/10 blur-xl rounded-[100%]"></div>
         </div>
