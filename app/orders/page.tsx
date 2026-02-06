@@ -6,39 +6,31 @@ import Link from "next/link";
 import { FaTrash, FaMinus, FaPlus, FaArrowRight, FaShoppingBag } from "react-icons/fa";
 
 interface CartItem {
-  id: number;
   name: string;
   price: number;
   quantity: number;
   image: string;
-  category: string;
 }
 
 export default function OrdersPage() {
   const [cartItems, setCartItems] = useState<CartItem[]>([
     {
-      id: 1,
-      name: "Truffle Mushroom Pasta",
+      name: "onion ring",
       price: 18.50,
       quantity: 1,
-      image: "/menu/pexels-foodie-factor-162291-551991.jpg",
-      category: "Main Course"
+      image: "/menu/onion ring.jpg",
     },
     {
-      id: 2,
-      name: "Citrus Mint Refresher",
+      name: "Melt Burger",
       price: 6.50,
       quantity: 2,
-      image: "/menu/pexels-alena-shekhovtcova-6941040.jpg",
-      category: "Drinks"
+      image: "/menu/melt burger.jpg",
     },
     {
-      id: 3,
-      name: "Berry Yogurt Parfait",
+      name: "Zilla Burger",
       price: 8.00,
       quantity: 1,
-      image: "/menu/pexels-polina-tankilevitch-4109111.jpg",
-      category: "Dessert"
+      image: "/menu/zilla burger.jpg",
     }
   ]);
 
@@ -48,9 +40,9 @@ export default function OrdersPage() {
     setIsClient(true);
   }, []);
 
-  const updateQuantity = (id: number, delta: number) => {
+  const updateQuantity = (name: string, delta: number) => {
     setCartItems(items => items.map(item => {
-      if (item.id === id) {
+      if (item.name === name) {
         const newQuantity = Math.max(0, item.quantity + delta);
         if (newQuantity === 0) return item; // Don't remove on 0, wait for trash click or explicit 0 handling logic if desired
         return { ...item, quantity: newQuantity };
@@ -59,8 +51,8 @@ export default function OrdersPage() {
     }));
   };
 
-  const removeItem = (id: number) => {
-    setCartItems(items => items.filter(item => item.id !== id));
+  const removeItem = (name: string) => {
+    setCartItems(items => items.filter(item => item.name !== name));
   };
 
   const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -112,7 +104,7 @@ export default function OrdersPage() {
             <div className="flex-1 space-y-4">
               {cartItems.map((item) => (
                 <div 
-                  key={item.id} 
+                  key={item.name} 
                   className="bg-white p-4 sm:p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col sm:flex-row items-center gap-6 group transition-colors hover:border-gray-200"
                 >
                   {/* Image */}
@@ -129,11 +121,10 @@ export default function OrdersPage() {
                   <div className="flex-1 w-full text-center sm:text-left">
                     <div className="flex justify-between items-start mb-1">
                       <div>
-                        <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{item.category}</span>
                         <h3 className="text-xl font-semibold text-[#1d1d1f]">{item.name}</h3>
                       </div>
                       <button 
-                        onClick={() => removeItem(item.id)} 
+                        onClick={() => removeItem(item.name)} 
                         className="text-gray-300 hover:text-red-500 transition-colors p-2 hidden sm:block"
                         aria-label="Remove item"
                       >
@@ -147,8 +138,8 @@ export default function OrdersPage() {
                        <div className="flex items-center gap-4 bg-gray-50 rounded-full px-4 py-2 border border-gray-100">
                           <button 
                             onClick={() => {
-                                if (item.quantity === 1) removeItem(item.id); 
-                                else updateQuantity(item.id, -1);
+                                if (item.quantity === 1) removeItem(item.name); 
+                                else updateQuantity(item.name, -1);
                             }}
                             className="w-8 h-8 flex items-center justify-center rounded-full bg-white text-gray-600 shadow-sm hover:scale-110 active:scale-95 transition-all text-xs"
                           >
@@ -156,7 +147,7 @@ export default function OrdersPage() {
                           </button>
                           <span className="text-lg font-medium w-6 text-center">{item.quantity}</span>
                           <button 
-                            onClick={() => updateQuantity(item.id, 1)}
+                            onClick={() => updateQuantity(item.name, 1)}
                             className="w-8 h-8 flex items-center justify-center rounded-full bg-[#1d1d1f] text-white shadow-md hover:scale-110 active:scale-95 transition-all text-xs"
                           >
                              <FaPlus />
@@ -168,7 +159,7 @@ export default function OrdersPage() {
                   
                   {/* Mobile Trash Button */}
                   <button 
-                    onClick={() => removeItem(item.id)} 
+                    onClick={() => removeItem(item.name)} 
                     className="text-gray-300 hover:text-red-500 transition-colors sm:hidden w-full py-2 border-t border-gray-100 mt-2"
                   >
                     Remove Item
