@@ -3,31 +3,34 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { FaInstagram, FaTwitter, FaTiktok, FaFacebookF } from 'react-icons/fa';
 
 const footerLinks = {
-  shop: {
-    title: "Belanja dan Belajar",
-    links: ["Menu Favorit", "Dessert Series", "Fresh Drinks", "Paket Hemat", "Exclusive Member", "Special Event"]
+  explore: {
+    title: "Explore",
+    links: [
+      { name: "Menu", href: "/menu" },
+      { name: "Our Story", href: "#" },
+      { name: "Locations", href: "#" },
+      { name: "Reservations", href: "#" },
+    ]
   },
-  account: {
-    title: "Akun",
-    links: ["Kelola ID", "Akun Saya", "Pesanan Saya", "Voucher Saya"]
+  support: {
+    title: "Support",
+    links: [
+      { name: "Contact Us", href: "#" },
+      { name: "FAQ", href: "#" },
+      { name: "Catering", href: "#" },
+      { name: "Careers", href: "#" },
+    ]
   },
-  store: {
-    title: "Toko",
-    links: ["Cari Toko", "Genius Bar", "Today at Apple", "Apple Camp", "Aplikasi Apple Store", "Pembiayaan", "Program Daur Ulang"]
-  },
-  business: {
-    title: "Untuk Bisnis",
-    links: ["Apple dan Bisnis", "Belanja untuk Bisnis"]
-  },
-  values: {
-    title: "Nilai-nilai Apple",
-    links: ["Aksesibilitas", "Pendidikan", "Lingkungan", "Privasi", "Inklusi dan Keberagaman"]
-  },
-  about: {
-    title: "Tentang Apple",
-    links: ["Newsroom", "Kepemimpinan Apple", "Peluang Karier", "Investor", "Etika & Kepatuhan", "Acara", "Hubungi Apple"]
+  legal: {
+    title: "Legal",
+    links: [
+      { name: "Privacy Policy", href: "#" },
+      { name: "Terms of Service", href: "#" },
+      { name: "Cookie Policy", href: "#" },
+    ]
   }
 };
 
@@ -40,106 +43,93 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-[#f5f5f7] text-[#1d1d1f] text-[12px] pt-10 pb-6 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4">
+    <footer className="bg-[#1d1d1f] text-gray-400 py-16 font-light">
+      <div className="max-w-7xl mx-auto px-6">
         
-        {/* Breadcrumbs / Top Text */}
-        <div className="mb-4 pb-4 border-b border-gray-200 text-gray-500">
-          <p className="mb-2">1. Harga spesial berlaku untuk pembelian paket tertentu. Syarat dan ketentuan berlaku.</p>
-          <p>2. Menu dapat berubah sewaktu-waktu tergantung ketersediaan bahan.</p>
-        </div>
-
-        {/* Links Columns */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-y-8 gap-x-4 mb-8">
-          <div className="flex flex-col gap-6">
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">{footerLinks.shop.title}</h3>
-              <ul className="flex flex-col gap-2 text-gray-600">
-                {footerLinks.shop.links.map((link) => (
-                  <li key={link}><Link href="#" className="hover:underline">{link}</Link></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">{footerLinks.account.title}</h3>
-              <ul className="flex flex-col gap-2 text-gray-600">
-                 {footerLinks.account.links.map((link) => (
-                  <li key={link}><Link href="#" className="hover:underline">{link}</Link></li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-6">
-             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">{footerLinks.store.title}</h3>
-              <ul className="flex flex-col gap-2 text-gray-600">
-                 {footerLinks.store.links.map((link) => (
-                  <li key={link}><Link href="#" className="hover:underline">{link}</Link></li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-           <div className="flex flex-col gap-6">
-             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">{footerLinks.business.title}</h3>
-              <ul className="flex flex-col gap-2 text-gray-600">
-                 {footerLinks.business.links.map((link) => (
-                  <li key={link}><Link href="#" className="hover:underline">{link}</Link></li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          
-          <div className="flex flex-col gap-6">
-             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">{footerLinks.values.title}</h3>
-              <ul className="flex flex-col gap-2 text-gray-600">
-                 {footerLinks.values.links.map((link) => (
-                  <li key={link}><Link href="#" className="hover:underline">{link}</Link></li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-           <div className="flex flex-col gap-6">
-             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">{footerLinks.about.title}</h3>
-              <ul className="flex flex-col gap-2 text-gray-600">
-                 {footerLinks.about.links.map((link) => (
-                  <li key={link}><Link href="#" className="hover:underline">{link}</Link></li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="pt-4 border-t border-gray-200">
-           <div className="mb-2 text-gray-500">
-             Lebih banyak cara untuk berbelanja: <Link href="#" className="text-[#0066cc] hover:underline">Cari Apple Store</Link> atau <Link href="#" className="text-[#0066cc] hover:underline">penjual lain</Link> di dekat Anda. Atau hubungi 001-803-069-2098.
+        {/* Top Section: Logo & Newsletter (Optional) or just visual balance */}
+        <div className="flex flex-col md:flex-row justify-between items-start mb-12 border-b border-gray-800 pb-12">
+           <div className="mb-8 md:mb-0">
+              <h2 className="text-2xl font-semibold text-white tracking-tight mb-4">Savory & Sweet.</h2>
+              <p className="max-w-xs text-sm leading-relaxed">
+                 Experiencing the art of culinary excellence. Premium ingredients, unforgettable flavors.
+              </p>
            </div>
            
-           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mt-6">
-             <div className="text-gray-500">
-               Copyright © {new Date().getFullYear()} Apple Inc. Seluruh hak cipta dilindungi undang-undang.
-             </div>
-             <div className="flex flex-wrap gap-x-4 gap-y-2 text-gray-600">
-               <Link href="#" className="hover:underline dark:hover:text-black">Kebijakan Privasi</Link>
-               <span className="text-gray-300">|</span>
-               <Link href="#" className="hover:underline dark:hover:text-black">Ketentuan Penggunaan</Link>
-               <span className="text-gray-300">|</span>
-               <Link href="#" className="hover:underline dark:hover:text-black">Penjualan dan Pengembalian Dana</Link>
-               <span className="text-gray-300">|</span>
-               <Link href="#" className="hover:underline dark:hover:text-black">Hukum</Link>
-               <span className="text-gray-300">|</span>
-               <Link href="#" className="hover:underline dark:hover:text-black">Peta Situs</Link>
-             </div>
-             <div className="text-gray-600 font-medium">
-               Indonesia
-             </div>
+           <div className="flex gap-4">
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300">
+                 <FaInstagram size={18} />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300">
+                 <FaTiktok size={18} />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300">
+                 <FaTwitter size={18} />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300">
+                 <FaFacebookF size={18} />
+              </a>
            </div>
+        </div>
+
+        {/* Links Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+          
+          {/* Column 1 */}
+          <div>
+            <h3 className="text-white font-medium mb-4">{footerLinks.explore.title}</h3>
+            <ul className="space-y-3 text-sm">
+               {footerLinks.explore.links.map((link) => (
+                 <li key={link.name}>
+                   <Link href={link.href} className="hover:text-white transition-colors">{link.name}</Link>
+                 </li>
+               ))}
+            </ul>
+          </div>
+
+          {/* Column 2 */}
+          <div>
+            <h3 className="text-white font-medium mb-4">{footerLinks.support.title}</h3>
+            <ul className="space-y-3 text-sm">
+               {footerLinks.support.links.map((link) => (
+                 <li key={link.name}>
+                   <Link href={link.href} className="hover:text-white transition-colors">{link.name}</Link>
+                 </li>
+               ))}
+            </ul>
+          </div>
+
+           {/* Column 3 */}
+           <div>
+            <h3 className="text-white font-medium mb-4">{footerLinks.legal.title}</h3>
+            <ul className="space-y-3 text-sm">
+               {footerLinks.legal.links.map((link) => (
+                 <li key={link.name}>
+                   <Link href={link.href} className="hover:text-white transition-colors">{link.name}</Link>
+                 </li>
+               ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Address/Info */}
+          <div>
+             <h3 className="text-white font-medium mb-4">Visit Us</h3>
+             <address className="not-italic text-sm space-y-3">
+               <p>123 Culinary Avenue</p>
+               <p>Foodie City, FL 12345</p>
+               <p className="mt-4">
+                 <a href="tel:+1234567890" className="hover:text-white transition-colors">+1 (234) 567-890</a>
+               </p>
+               <p>
+                 <a href="mailto:hello@savorysweet.com" className="hover:text-white transition-colors">hello@savorysweet.com</a>
+               </p>
+             </address>
+          </div>
+
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 pt-8 border-t border-gray-800">
+           <p>&copy; {new Date().getFullYear()} Savory & Sweet by Untirta. All rights reserved.</p>
         </div>
 
       </div>

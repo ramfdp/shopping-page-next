@@ -38,19 +38,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Hero Image - Floating Effect */}
-        <div className="relative w-full max-w-[1000px] aspect-16/10 md:aspect-21/9 mt-4 animate-float z-10">
-           <Image 
-             src="/slide2.png"
-             alt="Featured Dish"
-             fill
-             className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
-             priority
-           />
-           
-           {/* Reflection/Ground shadow */}
-           <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[60%] h-[20px] bg-black/10 blur-xl rounded-[100%]"></div>
-        </div>
       </section>
 
       {/* Bento Grid Section - "The Collection" */}
